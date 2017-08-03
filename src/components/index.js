@@ -4,6 +4,8 @@ import footer from './footer'
 import wathMain from './wathMain'
 import main from './main'
 import searchBox from './searchBox'
+import list from './List'
+import item from './item'
 
 
 export default {
@@ -12,5 +14,7 @@ export default {
     footer,
     wathMain,
     main,
-    searchBox
+    searchBox,
+    list,
+    item
 }

@@ -4,6 +4,7 @@
         line-height: 100px;
         font-size: 20px;
         font-weight: 900;
+            clear: both;
     }
     .navmain{
         padding: 10px 20px;
@@ -33,6 +34,7 @@
             </ul>
         </div>
         <div v-if="ox>5" v-text="ox" class="txt"></div>
+        <v-item :query="querys"></v-item>
         <!--main组件  -->
         <v-main :nav="list" @text="text"></v-main>
       
@@ -52,6 +54,7 @@ export default {
             timers :null,
             list:['大主宰','莽荒纪','青云志','狼毒花','花千骨'],
             stla:['父亲','爱','清明雨上','素颜','不懂','原生那个草','告白气球','如果我爱你','同学会'],
+            querys:''
         }
     },
     computed: {
@@ -103,6 +106,7 @@ export default {
         },
         query(newquery){
             console.log(newquery)
+            this.querys = newquery;
         }
     }
 }

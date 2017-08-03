@@ -29,6 +29,8 @@
 			<br> 哈哈，恭喜你已经入坑Vue2
 		</div>
 		<div class="goMap" @click="goMap()">地图</div>
+		<div>加载中...</div>
+		
 		<v-footer>
             <li>大家</li>
             <li>小水</li>

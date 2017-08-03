@@ -51,7 +51,6 @@ export default {
     },
     created(){
         this.$watch('query',function(newQuery){
-            
             this.$emit('query',newQuery);
         })
     }
