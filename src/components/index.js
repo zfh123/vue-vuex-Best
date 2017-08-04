@@ -6,7 +6,8 @@ import main from './main'
 import searchBox from './searchBox'
 import list from './List'
 import item from './item'
-
+import topMain from './topMain'
+import loading from './loading'
 
 export default {
     header,
@@ -16,5 +17,7 @@ export default {
     main,
     searchBox,
     list,
-    item
+    item,
+    topMain,
+    loading
 }

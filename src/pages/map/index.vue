@@ -1,5 +1,14 @@
 <style>
+body {
+    background: #222;
+}
 
+.loading-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
 </style>
 <template>
     <div class="map">
@@ -7,7 +16,11 @@
             <router-link slot="left" to="/watch">watch</router-link>
             <router-link slot="right" to="/">首页</router-link>
         </v-header>
+
         <div id="container"></div>
+        <div class="loading-container" v-show="!lex">
+            <v-loading></v-loading>
+        </div>
         <!--main组件  -->
         <v-main :nav="nav" @text="text"></v-main>
         <!--footer组件  -->
@@ -51,7 +64,11 @@ export default {
         }
     },
     mounted() {
-        this.getUserLocation();
+        var $this =this;
+        setTimeout(function() {
+            $this.getUserLocation();
+        }, 2000);
+        
     },
     methods: {
         text(item){
