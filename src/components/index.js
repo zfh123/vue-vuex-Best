@@ -10,6 +10,8 @@ import topMain from './topMain'
 import loading from './loading'
 import scroll from './scroll'
 import suggest from './suggest'
+import songList from './songList'
+
 export default {
     header,
     tab,
@@ -22,5 +24,6 @@ export default {
     topMain,
     loading,
     scroll,
-    suggest
+    suggest,
+    songList
 }

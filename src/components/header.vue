@@ -5,7 +5,7 @@
 		color: #fff;
 		text-align: center;
 		background: #222;
-		z-index: 9999;
+		z-index: 99;
 		.item {
 			position: absolute;
 			top: 0;

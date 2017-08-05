@@ -2,7 +2,7 @@
 .suggest {
     height: 100%;
     overflow: hidden;
-    background: #222;
+    background: yellow;
 }
 
 .suggest-list {

@@ -1,7 +1,4 @@
 <style>
-body {
-    background: #222;
-}
 
 .recommend-content {
     height: 100%;
@@ -18,7 +15,7 @@ body {
 <template>
     <div class="example">
         <v-header title="example">
-            <router-link slot="left" to="/iscroll">scroll</router-link>
+            <router-link slot="left" to="/scroll">scroll</router-link>
             <router-link slot="right" to="/watch">watch</router-link>
         </v-header>
         <v-topMain>

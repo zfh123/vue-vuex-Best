@@ -1,8 +1,4 @@
 <style>
-body {
-    background: #222;
-}
-
 .loading-container {
     position: absolute;
     width: 100%;
@@ -16,7 +12,7 @@ body {
             <router-link slot="left" to="/watch">watch</router-link>
             <router-link slot="right" to="/">首页</router-link>
         </v-header>
-
+    
         <div id="container"></div>
         <div class="loading-container" v-show="!lex">
             <v-loading></v-loading>
@@ -35,7 +31,7 @@ body {
 </template>
 <script>
 import { mapActions, mapState } from 'vuex'
-import {getCommonData,common,comTest} from '../common/js/base'
+import { getCommonData, common, comTest } from '../common/js/base'
 export default {
     data() {
         return {
@@ -45,7 +41,7 @@ export default {
             ley: 0,
             map: {},
             timer: null,
-            nav:[1,2,3,4,5,6],
+            nav: [1, 2, 3, 4, 5, 6],
         }
     },
     computed: {
@@ -64,15 +60,15 @@ export default {
         }
     },
     mounted() {
-        var $this =this;
-        setTimeout(function() {
+        var $this = this;
+        setTimeout(function () {
             $this.getUserLocation();
         }, 2000);
-        
+
     },
     methods: {
-        text(item){
-            console.log('text子组件传给父组件的通信其值为：'+ item);
+        text(item) {
+            console.log('text子组件传给父组件的通信其值为：' + item);
         },
         creatMap() {  //创建地图
             this.map = new AMap.Map("container", {
