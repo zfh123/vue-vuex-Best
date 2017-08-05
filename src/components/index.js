@@ -8,7 +8,8 @@ import list from './List'
 import item from './item'
 import topMain from './topMain'
 import loading from './loading'
-
+import scroll from './scroll'
+import suggest from './suggest'
 export default {
     header,
     tab,
@@ -19,5 +20,7 @@ export default {
     list,
     item,
     topMain,
-    loading
+    loading,
+    scroll,
+    suggest
 }

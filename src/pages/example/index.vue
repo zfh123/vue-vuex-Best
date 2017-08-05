@@ -3,6 +3,11 @@ body {
     background: #222;
 }
 
+.recommend-content {
+    height: 100%;
+    overflow: hidden;
+}
+
 .loading-container {
     position: absolute;
     width: 100%;
@@ -19,6 +24,11 @@ body {
         <v-topMain>
     
         </v-topMain>
+        <v-scroll ref="scroll" class="recommend-content" :data="discList">
+            <div>
+    
+            </div>
+        </v-scroll>
         <div class="loading-container" v-show="!discList.length">
             <v-loading></v-loading>
         </div>

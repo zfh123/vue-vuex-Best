@@ -1,4 +1,7 @@
 <style lang="less" scoped>
+body {
+    background: #fff;
+}
 .login-msg {
 	padding: 50px;
 	text-align: center;

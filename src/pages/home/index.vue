@@ -1,5 +1,7 @@
 <style lang="less" scoped>
-
+body {
+    background: #fff;
+}
 </style>
 <template>
 	<div>
