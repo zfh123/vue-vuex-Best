@@ -65,9 +65,13 @@ export default {
 
             if (this.pullup) {
                 this.scroll.on('scrollEnd', () => {
-                    console.log(this.scroll.y)
+                    console.log(this.scroll.y)    
+                    if (this.scroll.y >= 0) {
+                        console.log('下拉刷新')
+                        this.$emit('scrollToTop')
+                    }
                     if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
-                        
+                        console.log(this.scroll.y - this.scroll.maxScrollY - 50)
                         this.$emit('scrollToEnd')
                     }
                 })
