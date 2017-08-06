@@ -1,5 +1,4 @@
 <style>
-
 .recommend-content {
     height: 100%;
     overflow: hidden;
@@ -21,7 +20,7 @@
         <v-topMain>
     
         </v-topMain>
-        <v-scroll ref="scroll" class="recommend-content" :data="discList">
+        <v-scroll ref="scroll" class="recommend-content" :data="discList" :listenScroll="listenScroll">
             <div>
     
             </div>
@@ -37,6 +36,7 @@ export default {
     data() {
         return {
             discList: [],
+            listenScroll: true
         }
     }
 }

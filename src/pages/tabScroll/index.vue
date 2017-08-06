@@ -91,7 +91,8 @@ li {
             </div>
         </div>
         <div class="tab-scroll" ref="searchList">
-            <v-scroll :data="topList" :api="api" class="tab-scroll-list tab" :pullup="pullup" @scrollToEnd="getMore">
+            <!--api 传递给其子组件  -->
+            <v-scroll @scroll="scroll" :data="topList" :hasTab="hasTab" class="tab-scroll-list tab" :listenScroll="listenScroll" :pullup="pullup" @scrollToEnd="getMore">
                 <ul class="bgColor">
                     <li class="list" v-for="item in topList">
                         <img width="100" height="100" :src="item.picUrl" />
@@ -115,7 +116,8 @@ export default {
             url: '',
             pullup: true,
             page: 1,
-            api: 1
+            hasTab: 1,
+            listenScroll:true
         }
     },
     created() {
@@ -126,6 +128,9 @@ export default {
         
     },
     methods: {
+        scroll(pos){
+            console.log('监控滑动的组件'+pos.y)
+        },
         backRouter(){
             this.$router.back()
         },
@@ -141,7 +146,7 @@ export default {
             }
             this.page = 1;
             this.topList = [];
-            this.api = index;
+            this.hasTab = index;//点击时获取到不同的索引值---传递给其子组件---便于其监控不同索引值进行SCROLL的重新定位
             this.getsongList();
         },
         getsongList() {

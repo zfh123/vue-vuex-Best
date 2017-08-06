@@ -28,7 +28,7 @@ export default {
             type: Array,
             default: null
         },
-        api: {
+        hasTab: {
             type: Number,
             default: 9
         },
@@ -67,6 +67,7 @@ export default {
             if (this.listenScroll) {
                 let me = this
                 this.scroll.on('scroll', (pos) => {
+                    console.log(pos.y)
                     me.$emit('scroll', pos)
                 })
             }
@@ -137,7 +138,7 @@ export default {
                 this.refresh();
             }, this.refreshDelay)
         },
-        api() {
+        hasTab() {//监控其值得变化
             setTimeout(() => {
                 this.scrollTo(0, 0);
             }, this.refreshDelay)
