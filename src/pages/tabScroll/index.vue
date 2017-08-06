@@ -57,6 +57,29 @@ li {
     height: 100%;
     overflow: hidden;
 }
+
+.bgColor {
+    background: #222;
+}
+
+.Load {
+    position: fixed;
+    top: 50%;
+}
+
+.backRouter{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border: 1 solid yellow;
+    border-radius: 50%;
+    color: yellow;
+    background: #fff;
+}
 </style>
 <template>
     <div class="tabscroll">
@@ -69,16 +92,19 @@ li {
         </div>
         <div class="tab-scroll" ref="searchList">
             <v-scroll :data="topList" :api="api" class="tab-scroll-list tab" :pullup="pullup" @scrollToEnd="getMore">
-                <ul>
+                <ul class="bgColor">
                     <li class="list" v-for="item in topList">
                         <img width="100" height="100" :src="item.picUrl" />
                     </li>
                 </ul>
             </v-scroll>
+            <v-loading class="Load" v-show="!topList"></v-loading>
         </div>
+        <div class="backRouter" @click="backRouter">back</div>
     </div>
 </template>
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
     data() {
         return {
@@ -89,13 +115,20 @@ export default {
             url: '',
             pullup: true,
             page: 1,
-            api:1
+            api: 1
         }
     },
     created() {
-        this.getsongList();
+        var $this =this;
+        setTimeout(function() {
+            $this.getsongList();
+        }, 1000);
+        
     },
     methods: {
+        backRouter(){
+            this.$router.back()
+        },
         change(index) {
             this.selected = index;
             console.log(this.selected)
