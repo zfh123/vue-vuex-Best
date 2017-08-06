@@ -28,6 +28,10 @@ export default {
             type: Array,
             default: null
         },
+        api: {
+            type: Number,
+            default: 9
+        },
         pullup: {
             type: Boolean,
             default: false
@@ -92,7 +96,7 @@ export default {
 
             if (this.pullup) {
                 this.scroll.on('scrollEnd', (position) => {
-                    console.log(position)
+
                     if (this.scroll.y >= 1) {
                         console.log('下拉刷新')
                         this.$emit('scrollToTop')
@@ -130,7 +134,12 @@ export default {
     watch: {
         data() {
             setTimeout(() => {
-                this.refresh()
+                this.refresh();
+            }, this.refreshDelay)
+        },
+        api() {
+            setTimeout(() => {
+                this.scrollTo(0, 0);
             }, this.refreshDelay)
         }
     }

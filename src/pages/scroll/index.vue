@@ -66,16 +66,35 @@
     top: 50%;
     transform: translateY(-50%);
 }
+
+.top-tip {
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    margin-top: -30px;
+}
+
+.alert {
+    position: fixed;
+    top: 38px;
+    color: #222;
+    line-height: 40px;
+    text-align: center;
+    width: 100%;
+    background: #fff;
+    opacity: 0.5;
+}
 </style>
 <template>
     <div class="scroll">
         <v-header title="scroll">
-            <router-link slot="left" to="/scroll">scroll</router-link>
+            <router-link slot="left" to="/tabScroll">tabScroll</router-link>
             <router-link slot="right" to="/example">example</router-link>
         </v-header>
         <div class="rank">
-            <v-scroll :data="topList" class="toplist" ref="toplist">
+            <v-scroll :data="topList" @upList="upList" @toplist="topLists" class="toplist" ref="toplist" :pullup="pullup" :load="load" :listen-scroll="listenScroll">
                 <ul>
+                    <div class="top-tip" ref="toptip" v-text="uprefish"></div>
                     <li @click="selectItem(item)" class="items" v-for="item in topList">
                         <div class="icon">
                             <img width="100" height="100" :src="item.picUrl" />
@@ -92,6 +111,7 @@
                     <v-loading></v-loading>
                 </div>
             </v-scroll>
+            <div v-show="alerts" class="alert" ref="alert">刷新成功</div>
         </div>
         <router-view></router-view>
     </div>
@@ -101,16 +121,34 @@ export default {
     data() {
         return {
             topList: [],
+            pullup: true,
+            listenScroll: true,
+            load: true,
+            uprefish: '下拉刷新',
+            alerts:false
         }
     },
     created() {
-        var $this =this;
+        var $this = this;
         setTimeout(function () {
             $this.getsongList();
         }, 1000);
 
     },
     methods: {
+        topLists() {
+            console.log('父组件下拉刷新')
+            this.uprefish = '释放立即刷新';
+        },
+        upList() {
+            console.log('滑动结束')
+            this.uprefish = '下拉刷新';
+            this.alerts = true;
+            var $this =this;
+            setTimeout(function() {
+                $this.alerts = false;
+            }, 1000);
+        },
         getsongList() {
             this.axios.get(confing.api.songList).then((response) => {
 
