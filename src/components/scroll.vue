@@ -32,6 +32,10 @@ export default {
             type: Boolean,
             default: false
         },
+        load: {
+            type: Boolean,
+            default: false
+        },
         beforeScroll: {
             type: Boolean,
             default: false
@@ -63,15 +67,39 @@ export default {
                 })
             }
 
+            if (this.load) {
+                console.log('load事件');
+                var $this = this;
+                // 滑动中
+                this.scroll.on('scroll', (position) => {
+                    console.log(position.y)
+                    if (position.y > 30) {
+                        console.log('释放立即刷新');
+                        $this.$emit('toplist')
+                    }
+                })
+                // 滑动结束
+                this.scroll.on('touchend', (position) => {
+                    if (position.y > 30) {
+                        console.log('下拉刷新');
+                        setTimeout(function () {
+                            $this.$emit('upList')
+                        }, 1000);
+
+                    }
+                })
+            }
+
             if (this.pullup) {
-                this.scroll.on('scrollEnd', () => {
-                    console.log(this.scroll.y)    
-                    if (this.scroll.y >= 0) {
+                this.scroll.on('scrollEnd', (position) => {
+                    console.log(position)
+                    if (this.scroll.y >= 1) {
                         console.log('下拉刷新')
                         this.$emit('scrollToTop')
                     }
                     if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
                         console.log(this.scroll.y - this.scroll.maxScrollY - 50)
+                        console.log('上拉加载更多')
                         this.$emit('scrollToEnd')
                     }
                 })
