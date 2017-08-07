@@ -38,6 +38,12 @@ export default {
             discList: [],
             listenScroll: true
         }
+    },
+    created() {
+        this.$nextTick(() => {
+            console.log(this.$refs.scroll)
+        })
+        
     }
 }
 </script>

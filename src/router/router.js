@@ -51,6 +51,11 @@ export default [
                 component: resolve => require(['../pages/longscroll/'], resolve)
             },
             {
+                path: '/bankcard', //tab页面配合loadmore
+                meta: { auth: false },
+                component: resolve => require(['../pages/bankcard/'], resolve)
+            },
+            {
                 path: '/scroll', //scroll页面
                 meta: { auth: false },
                 component: resolve => require(['../pages/scroll/'], resolve),

@@ -24,7 +24,10 @@ li {
 </style>
 <template>
     <div class="longscrolls">
-        <v-header title="longScroll"></v-header>
+        <v-header title="longScroll">
+            <router-link slot="left" to="/bankCard" ref="bankCard">bankCard</router-link>
+            <router-link slot="right" to="/watch">watch</router-link>
+        </v-header>
         <div class="rank">
             <v-scroll :data="list" class="toplist">
                 <ul>
@@ -49,7 +52,8 @@ export default {
     },
     methods: {
         init() {
-            this.list = [1, 2, 3, 4, 5, 6, 7, 4, 3, 2, 5, 6, 7, 3, 2, 2, 1, 3, 5, 6, 7, 7, 8, 8]
+            this.list = [1, 2, 3, 4, 5, 6, 7, 4, 3, 2, 5, 6, 7, 3, 2, 2, 1, 3, 5, 6, 7, 7, 8, 8];
+            console.log(this.$refs.bankCard)
         }
     }
 }
