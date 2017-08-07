@@ -5,7 +5,7 @@
 
 .topNav {
     position: fixed;
-    top: 0;
+    top: 38px;
     width: 100%;
     z-index: 999;
 }
@@ -42,7 +42,7 @@ li {
     position: fixed;
     width: 100%;
     bottom: 0;
-    top: 38px;
+    top: 76px;
 }
 
 .tab-scroll li {
@@ -83,6 +83,10 @@ li {
 </style>
 <template>
     <div class="tabscroll">
+        <v-header title="tabScroll">
+            <router-link slot="left" to="/longscroll">longScroll</router-link>
+            <router-link slot="right" to="/scroll">scroll</router-link>
+        </v-header>
         <div class="topNav" ref="topHeight">
             <div class="hd">
                 <ul class="clearfix">

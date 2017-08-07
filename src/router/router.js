@@ -46,6 +46,11 @@ export default [
                 component: resolve => require(['../pages/tabScroll/'], resolve)
             },
             {
+                path: '/longscroll', //tab页面配合loadmore
+                meta: { auth: false },
+                component: resolve => require(['../pages/longscroll/'], resolve)
+            },
+            {
                 path: '/scroll', //scroll页面
                 meta: { auth: false },
                 component: resolve => require(['../pages/scroll/'], resolve),

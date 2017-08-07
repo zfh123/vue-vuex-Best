@@ -12,31 +12,31 @@
 import BScroll from 'better-scroll'
 export default {
     props: {
-        probeType: {
-            type: Number,
-            default: 1
+        probeType: {  //1 会截流,只有在滚动结束的时候派发一个 scroll 事件。
+            type: Number,   //2在手指 move 的时候也会实时派发 scroll 事件，不会截流。 
+            default: 1//3除了手指 move 的时候派发scroll事件，在 swipe（手指迅速滑动一小段距离）的情况下，列表会有一个长距离的滚动动画，这个滚动的动画过程中也会实时派发滚动事件
         },
-        click: {
+        click: {//click: true 是否派发click事件
             type: Boolean,
             default: true
         },
-        listenScroll: {
+        listenScroll: {//是否监听滑动事件
             type: Boolean,
             default: false
         },
-        data: {
+        data: {//监控数是否变化  如果变化则刷新scroll
             type: Array,
             default: null
         },
-        hasTab: {
+        hasTab: {//是tab配合上拉加载  如果有通过传入不同的hasTab  来重新定位不同的tab
             type: Number,
-            default: 9
+            default: 9999999
         },
-        pullup: {
+        pullup: {//上拉加载更多
             type: Boolean,
             default: false
         },
-        load: {
+        load: {//下拉刷新
             type: Boolean,
             default: false
         },
@@ -97,11 +97,6 @@ export default {
 
             if (this.pullup) {
                 this.scroll.on('scrollEnd', (position) => {
-
-                    if (this.scroll.y >= 1) {
-                        console.log('下拉刷新')
-                        this.$emit('scrollToTop')
-                    }
                     if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
                         console.log(this.scroll.y - this.scroll.maxScrollY - 50)
                         console.log('上拉加载更多')
